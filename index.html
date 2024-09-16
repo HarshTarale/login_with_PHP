@@ -1,0 +1,135 @@
+<!DOCTYPE html >
+<html>
+<head>
+        <title>php login form </title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="hero">
+        <div class="conent">
+            <h1 id="log-h1">LOG IN</h1>
+            <h1 id="sign-h1">SIGN UP</h1>
+            <div id="form-con">
+                <form action="phpFile/login.php" method="post" id="loginF">
+                    <p class="p">Email</p>
+                    <input type="email" name="userNameL"  class="inp"  required>
+                    <p class="p">Password</p>
+                    <div class="inp" >
+                          <input type="password" name="passwordL" class="inp-2" required>
+                          <i class="fa-regular icon fa-eye-slash"></i>
+                    </div>
+                    <div id="detele">
+                        <input type="radio"  id="radio" required>
+                        <p class="dete"><a href="term.html" class="dete">Remember me </a>  </p>
+                    </div>
+                    <center> <button class="btn">Login in</button></center>
+                </form>
+                <form action="phpFile/sign.php" method="post" id="signF">
+                    <p>Name</p>
+                    <input type="text" name="userNameS" class="inp" required >
+                    <p>Email</p>
+                    <input type="email" name="userEmailS" class="inp" required >
+                    <p>Password</p>
+                    <div class="inp" >
+                        <input type="password" name="userPasswordS" class="inp-2" id="inp-2" required>
+                        <i class="fa-regular icon2 fa-eye-slash"></i>
+                    </div>
+                    <center> <button class="btn">Sign in</button></center>
+                </form>
+
+            </div> 
+        </div>
+    </div>
+</body>
+<script>
+     
+   const logF  = document.querySelector("#log-h1");
+   const sigF  = document.querySelector("#sign-h1");
+   const loginF  = document.querySelector('#loginF');
+   const signF  = document.querySelector('#signF');
+   const icon =  document.querySelector('.icon');
+   const icon2 = document.querySelector('.icon2');
+   const pass = document.querySelector('.inp-2');
+   const pass2 = document.querySelector('#inp-2');
+
+
+
+   logF.addEventListener("click",()=>{
+        loginF.style.display= "block";
+        signF.style.display="none";
+        logF.style.borderBottom = "solid 4px  rgb(255, 255, 255)";
+        sigF.style.borderBottom = "none";
+        logF.style.color="white";
+        sigF.style.color="black";
+
+
+   });
+
+   sigF.addEventListener("click",()=>{
+        loginF.style.display= "none";
+        signF.style.display= "block";
+        logF.style.borderBottom = "none";
+        sigF.style.borderBottom = "solid 4px  rgb(255, 255, 255)";
+        logF.style.color="black";
+        sigF.style.color="white";
+   });
+
+
+   icon.addEventListener("click",()=>{
+            eyePassword("login");
+   });
+   icon2.addEventListener("click",()=>{
+            eyePassword("sign");
+   });
+
+
+
+
+const eyePassword =(para)=>{
+       const attr =   icon.getAttribute('class');
+       const attr2 =   icon2.getAttribute('class');
+            
+        if( para == "login"){
+            switch(attr){
+                case "fa-regular icon fa-eye-slash": 
+                    icon.setAttribute("class", "fa-regular icon fa-eye");
+                    pass.setAttribute("type","text");
+                    break;
+                
+                case "fa-regular icon fa-eye":
+                    icon.setAttribute("class", "fa-regular icon fa-eye-slash");
+                    pass.setAttribute("type","password");
+                    break;
+
+                default : 
+                    alert("not change");
+                    break;
+            };
+        };
+
+        if(para == "sign"){
+            
+            switch(attr2){
+                case "fa-regular icon2 fa-eye-slash": 
+                    icon2.setAttribute("class", "fa-regular icon2 fa-eye");
+                    pass2.setAttribute("type","text");
+                    break;
+                
+                case "fa-regular icon2 fa-eye":
+                    icon2.setAttribute("class", "fa-regular icon2 fa-eye-slash");
+                    pass2.setAttribute("type","password");
+                    break;
+
+                default : 
+                    alert('not change');
+                    break;
+            };
+        };
+    };
+
+</script>
+</html>
+
+
+
